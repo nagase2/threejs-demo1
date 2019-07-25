@@ -3,6 +3,11 @@ import ReactDOM from "react-dom";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
+import Stats from 'three/examples/jsm/libs/stats.module.js';
+import { ColladaLoader } from 'three/examples/jsm/loaders/ColladaLoader.js';
+
+
+
 const style = {
   height: 400 // we can control scene size by setting container dimensions
 };
@@ -26,6 +31,8 @@ class App extends Component {
   // Standard scene setup in Three.js. Check "Creating a scene" manual for more information
   // https://threejs.org/docs/#manual/en/introduction/Creating-a-scene
   sceneSetup = () => {
+
+    
     // get container dimensions and use them for scene sizing
     const width = this.el.clientWidth;
     const height = this.el.clientHeight;
