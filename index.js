@@ -157,8 +157,6 @@ class App extends Component {
     }
     
   }
-
-
   render() {
     return (
       <div style={style} ref={ref => (this.el = ref)}>
