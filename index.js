@@ -35,7 +35,7 @@ class App extends Component {
       75, // fov = field of view
       width / height, // aspect ratio
       0.1, // near plane
-      1000 // far plane
+      2200 // far plane
     );
     this.camera.position.z = 5; // is used here to set some distance from a cube that is located at z = 0
     // OrbitControls allow a camera to orbit around the object
@@ -102,33 +102,60 @@ class App extends Component {
   };
 
  
-  addParts(){
+  addSilenA(){
+    const objName = "silen"
+    this.removeParts(objName)
     const material = new THREE.MeshPhongMaterial({
       color: 0xff0000,
-      emissive: 0x072534,
+      emissive: 0x002534,
       side: THREE.DoubleSide,
       flatShading: true
     });
-
-   
-  
     const geometry21 = new THREE.BoxGeometry(0.8, 0.5, 1);
     this.cube21 = new THREE.Mesh(geometry21, material);
+    this.cube21.name = objName
     this.cube21.position.set(2, 1, 0);
     this.scene.add(this.cube21);
 
     const geometry22 = new THREE.BoxGeometry(0.8, 0.5, 1);
     this.cube22 = new THREE.Mesh(geometry22, material);
+    this.cube22.name = objName
     this.cube22.position.set(-2, 1, 0);
     this.scene.add(this.cube22);
-   
+  }
+  //サイレンBを追加する
+ addSilenB(){
+   const objName = "silen"
+    this.removeParts(objName)
+    const material = new THREE.MeshPhongMaterial({
+      color: 0xff0000,
+      emissive: 0xff2534,
+      side: THREE.DoubleSide,
+      flatShading: true
+    });
+    const geometry21 = new THREE.BoxGeometry(0.3, 0.5, 1);
+    this.cube21 = new THREE.Mesh(geometry21, material);
+    this.cube21.name = objName
+    this.cube21.position.set(2, 1, 0);
+    this.scene.add(this.cube21);
+
+    const geometry22 = new THREE.BoxGeometry(0.3, 0.5, 1);
+    this.cube22 = new THREE.Mesh(geometry22, material);
+    this.cube22.name = objName
+    this.cube22.position.set(-2, 1, 0);
+    this.scene.add(this.cube22);
   }
   
-  removeParts(){
-    console.log("remove")
-    console.log(this.cube21)
-    this.scene.remove(this.cube21)
-    this.scene.remove(this.cube22)
+  //指定されたオブジェクトを削除
+  removeParts(objName){
+    // console.log("remove")
+    // console.log(this.cube21)
+    // this.scene.remove(this.cube21)
+    // this.scene.remove(this.cube22)
+    while(this.scene.getObjectByName(objName)!== undefined){
+      this.scene.remove(this.scene.getObjectByName(objName))
+    }
+    
   }
 
 
@@ -137,21 +164,21 @@ class App extends Component {
       <div style={style} ref={ref => (this.el = ref)}>
         <button
           onClick={() =>
-            this.addParts()
+            this.addSilenA()
           }
         >
           サイレンA
         </button>
         <button
           onClick={() =>
-            this.addParts()
+            this.addSilenB()
           }
         >
           サイレンB
         </button>
         <button
           onClick={() =>
-            this.removeParts()
+            this.removeParts("")
           }
         >
         サイレン消す
@@ -161,9 +188,11 @@ class App extends Component {
             this.removeParts()
           }
         >
-        S
+        Status.
         </button>
+        <br/><br/>
       </div>
+
       
     );
   }
@@ -184,7 +213,7 @@ class Container extends React.Component {
           }
         >
           {isMounted ? "Unmount" : "Mount"}
-        </button>
+        </button><br/><br/>
             
         {isMounted && <App />}
         {isMounted && <div>Scroll to zoom, drag to rotate</div>}
