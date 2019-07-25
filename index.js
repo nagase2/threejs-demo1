@@ -61,7 +61,6 @@ class App extends Component {
     this.cube = new THREE.Mesh(geometry, material);
     this.scene.add(this.cube);
 
-  
 
     const lights = [];
     lights[0] = new THREE.PointLight(0xffffff, 1, 0);
@@ -141,7 +140,14 @@ class App extends Component {
             this.addParts()
           }
         >
-          サイレン追加
+          サイレンA
+        </button>
+        <button
+          onClick={() =>
+            this.addParts()
+          }
+        >
+          サイレンB
         </button>
         <button
           onClick={() =>
@@ -149,6 +155,13 @@ class App extends Component {
           }
         >
         サイレン消す
+        </button>
+       <button
+          onClick={() =>
+            this.removeParts()
+          }
+        >
+        S
         </button>
       </div>
       
