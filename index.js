@@ -66,10 +66,10 @@ class App extends Component {
     this.scene.add(this.cube2);
 
     //救急車タイヤ部分
-    var geometryTire = new THREE.CylinderGeometry( 0.5,0.5,0.5, 100 );
+    var geometryTire = new THREE.CylinderGeometry( 0.5,0.5,0.5, 10 );
     const materialTire = new THREE.MeshPhongMaterial({
-      color: 0x010101,
-      emissive: 0x111111,
+      color: 0x0111111,
+      //emissive: 0x111111,
       side: THREE.DoubleSide,
       flatShading: true
     });
