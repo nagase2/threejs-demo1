@@ -46,10 +46,9 @@ class App extends Component {
     this.el.appendChild(this.renderer.domElement); // mount using React ref
   };
 
-  // Here should come custom code.
-  // Code below is taken from Three.js BoxGeometry example
-  // https://threejs.org/docs/#api/en/geometries/BoxGeometry
+ 
   addCustomSceneObjects = () => {
+    //救急車本体部分
     const geometry = new THREE.BoxGeometry(5, 2, 2);
 
     const material = new THREE.MeshPhongMaterial({
@@ -65,6 +64,34 @@ class App extends Component {
     this.cube2 = new THREE.Mesh(geometory2,material);
     this.cube2.position.set(-2.8,-0.2,0)
     this.scene.add(this.cube2);
+
+    //救急車タイヤ部分
+    var geometryTire = new THREE.CylinderGeometry( 0.5,0.5,0.5, 100 );
+    const materialTire = new THREE.MeshPhongMaterial({
+      color: 0x010101,
+      emissive: 0x111111,
+      side: THREE.DoubleSide,
+      flatShading: true
+    });
+    this.tire1 = new THREE.Mesh(geometryTire, materialTire);
+    this.tire1.position.set(-1.5,-0.8,1)
+    this.tire1.setRotationFromEuler(new THREE.Euler( 1.55, 0, 0, 'XYZ' ))
+    this.scene.add(this.tire1);
+
+    this.tire2 = new THREE.Mesh(geometryTire, materialTire);
+    this.tire2.position.set(1.5,-0.8,1)
+    this.tire2.setRotationFromEuler(new THREE.Euler( 1.55, 0, 0, 'XYZ' ))
+    this.scene.add(this.tire2);
+
+    this.tire3 = new THREE.Mesh(geometryTire, materialTire);
+    this.tire3.position.set(1.5,-0.8,-1)
+    this.tire3.setRotationFromEuler(new THREE.Euler( 1.55, 0, 0, 'XYZ' ))
+    this.scene.add(this.tire3);
+    
+        this.tire4 = new THREE.Mesh(geometryTire, materialTire);
+    this.tire4.position.set(-1.5,-0.8,-1)
+    this.tire4.setRotationFromEuler(new THREE.Euler( 1.55, 0, 0, 'XYZ' ))
+    this.scene.add(this.tire4);
 
 
     const lights = [];
