@@ -31,7 +31,7 @@ class App extends Component {
     const height = this.el.clientHeight;
 
     this.scene = new THREE.Scene();
-    var bgColor = new THREE.Color( 0xaaaaaa );
+    var bgColor = new THREE.Color( 0x999999 );
     this.scene.background = bgColor
     this.camera = new THREE.PerspectiveCamera(
       90, // 物体からのカメラの距離
@@ -101,9 +101,9 @@ class App extends Component {
     lights[1] = new THREE.PointLight(0xffffff, 1, 0);
     lights[2] = new THREE.PointLight(0xffffff, 1, 0);
 
-    lights[0].position.set(11, 200, 0);
+    lights[0].position.set(1, 100, 0);
     lights[1].position.set(100, 0, 100);
-    lights[2].position.set(-50, -150, -100);
+    lights[2].position.set(-10, -10, -10);
 
     this.scene.add(lights[0]);
     this.scene.add(lights[1]);
@@ -244,13 +244,8 @@ class App extends Component {
         >
         サイレン消す
         </button>
-       <button
-          onClick={() =>
-            this.removeParts()
-          }
-        >
-        Status.
-        </button>
+     
+     
         <br/><br/>
       </div>
 
