@@ -178,7 +178,7 @@ class App extends Component {
         </button>
         <button
           onClick={() =>
-            this.removeParts("")
+            this.removeParts("silen")
           }
         >
         サイレン消す
