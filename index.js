@@ -31,6 +31,8 @@ class App extends Component {
     const height = this.el.clientHeight;
 
     this.scene = new THREE.Scene();
+    var bgColor = new THREE.Color( 0xaaaaaa );
+    this.scene.background = bgColor
     this.camera = new THREE.PerspectiveCamera(
       90, // 物体からのカメラの距離
       width / height, // aspect ratio
