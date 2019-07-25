@@ -32,10 +32,10 @@ class App extends Component {
 
     this.scene = new THREE.Scene();
     this.camera = new THREE.PerspectiveCamera(
-      75, // fov = field of view
+      90, // 物体からのカメラの距離
       width / height, // aspect ratio
       0.1, // near plane
-      2200 // far plane
+      1000 // far plane
     );
     this.camera.position.z = 5; // is used here to set some distance from a cube that is located at z = 0
     // OrbitControls allow a camera to orbit around the object
@@ -60,6 +60,11 @@ class App extends Component {
     });
     this.cube = new THREE.Mesh(geometry, material);
     this.scene.add(this.cube);
+
+    const geometory2 = new THREE.BoxGeometry(0.8, 1.5, 1.5);
+    this.cube2 = new THREE.Mesh(geometory2,material);
+    this.cube2.position.set(-2.8,-0.2,0)
+    this.scene.add(this.cube2);
 
 
     const lights = [];
@@ -145,6 +150,28 @@ class App extends Component {
     this.cube22.position.set(-2, 1, 0);
     this.scene.add(this.cube22);
   }
+    //サイレンBを追加する
+ addSilenC(){
+   const objName = "silen"
+    this.removeParts(objName)
+    const material = new THREE.MeshPhongMaterial({
+      color: 0xff0000,
+      emissive: 0xff25ff,
+      side: THREE.DoubleSide,
+      flatShading: true
+    });
+    const geometry21 = new THREE.BoxGeometry(0.5, 0.9, 1);
+    this.cube21 = new THREE.Mesh(geometry21, material);
+    this.cube21.name = objName
+    this.cube21.position.set(2, 1, 0);
+    this.scene.add(this.cube21);
+
+    const geometry22 = new THREE.BoxGeometry(0.5, 0.9, 1);
+    this.cube22 = new THREE.Mesh(geometry22, material);
+    this.cube22.name = objName
+    this.cube22.position.set(-2, 1, 0);
+    this.scene.add(this.cube22);
+  }
   
   //指定されたオブジェクトを削除
   removeParts(objName){
@@ -173,6 +200,13 @@ class App extends Component {
           }
         >
           サイレンB
+        </button>
+        <button
+          onClick={() =>
+            this.addSilenC()
+          }
+        >
+          サイレンC
         </button>
         <button
           onClick={() =>
