@@ -60,17 +60,20 @@ class App extends Component {
     //救急車本体部分
     const geometry = new THREE.BoxGeometry(5, 2, 2);
 
-    const material = new THREE.MeshPhongMaterial({
+    this.material = new THREE.MeshPhongMaterial({
       color: 0xffffff,
       emissive: 0x072534,
+      transparent: true,
+      opacity : 0.9, //透明度
+      wireframe :true, //ワイヤフレーム
       side: THREE.DoubleSide,
       flatShading: true
     });
-    this.cube = new THREE.Mesh(geometry, material);
+    this.cube = new THREE.Mesh(geometry, this.material);
     this.scene.add(this.cube);
 
     const geometory2 = new THREE.BoxGeometry(0.8, 1.5, 1.5);
-    this.cube2 = new THREE.Mesh(geometory2,material);
+    this.cube2 = new THREE.Mesh(geometory2,this.material);
     this.cube2.position.set(-2.8,-0.2,0)
     this.scene.add(this.cube2);
 
@@ -208,7 +211,9 @@ class App extends Component {
     this.cube22.position.set(-2, 1, 0);
     this.scene.add(this.cube22);
   }
-  
+  changeWireframeSetting(){
+    this.material.wireframe ? this.material.wireframe =false : this.material.wireframe= true;
+  }
   //指定されたオブジェクトを削除
   removeParts(objName){
     // console.log("remove")
@@ -251,7 +256,14 @@ class App extends Component {
         >
         サイレン消す
         </button>
-     
+        <button
+          onClick={() =>
+            this.changeWireframeSetting
+        ()
+          }
+        >
+        ワイヤフレーム
+        </button>    
      
         <br/><br/>
       </div>
