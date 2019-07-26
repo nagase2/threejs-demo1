@@ -64,7 +64,7 @@ class App extends Component {
       color: 0xffffff,
       emissive: 0x072534,
       transparent: true,
-      opacity : 0.9, //透明度
+      opacity : 0.95, //透明度
       wireframe :false, //ワイヤフレーム
       side: THREE.DoubleSide,
       flatShading: true
