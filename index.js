@@ -44,7 +44,11 @@ class App extends Component {
       0.1, // near plane
       1000 // far plane
     );
-    this.camera.position.z = 10; // is used here to set some distance from a cube that is located at z = 0
+
+    this.camera.position.set( 4, 5, 4);
+		//this.camera.lookAt( 0, 2, 0 );
+
+    //this.camera.position.z = 10; // is used here to set some distance from a cube that is located at z = 0
     // OrbitControls allow a camera to orbit around the object
     // https://threejs.org/docs/#examples/controls/OrbitControls
     this.controls = new OrbitControls(this.camera, this.el);
