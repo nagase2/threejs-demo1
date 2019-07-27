@@ -46,13 +46,24 @@ class App extends Component {
       0.1, // near plane
       1000 // far plane
     );
-    this.camera.position.z = 5; // is used here to set some distance from a cube that is located at z = 0
+    this.camera.position.z = 10; // is used here to set some distance from a cube that is located at z = 0
     // OrbitControls allow a camera to orbit around the object
     // https://threejs.org/docs/#examples/controls/OrbitControls
     this.controls = new OrbitControls(this.camera, this.el);
     this.renderer = new THREE.WebGLRenderer();
     this.renderer.setSize(width, height);
     this.el.appendChild(this.renderer.domElement); // mount using React ref
+
+    //地面を表示
+      var mesh = new THREE.Mesh( new THREE.PlaneBufferGeometry( 2000, 2000 ), new THREE.MeshPhongMaterial( { color: 0x999999, depthWrite: false } ) );
+  mesh.rotation.x = - Math.PI / 2;
+  mesh.receiveShadow = true;
+  this.scene.add( mesh );
+  var grid = new THREE.GridHelper( 2000, 1000, 0x000000, 0x000000 );
+  grid.position.set(0,-1,0)
+  grid.material.opacity = 0.2;
+  grid.material.transparent = true;
+  this.scene.add( grid );
   };
 
  
