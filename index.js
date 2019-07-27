@@ -127,12 +127,15 @@ class App extends Component {
     lights[1].position.set(100, 0, 100);
     lights[2].position.set(-10, -10, -10);
     
-    let light = lights[0];
+
+    let light = new THREE.HemisphereLight(0x555555, 0x111111);
+    light.position.set(333, 200, 33);
+    this.scene.add(light);
     light.castShadow =true;
-    light.shadow.camera.top = 18;
-    light.shadow.camera.bottom = - 10;
-    light.shadow.camera.left = - 10;
-    light.shadow.camera.right = 120;
+    // light.shadow.camera.top = 18;
+    // light.shadow.camera.bottom = - 10;
+    // light.shadow.camera.left = - 10;
+    // light.shadow.camera.right = 120;
 
     this.scene.add(lights[0]);
     this.scene.add(lights[1]);
@@ -178,12 +181,15 @@ class App extends Component {
     this.cube21 = new THREE.Mesh(geometry21, material);
     this.cube21.name = objName
     this.cube21.position.set(2, 1, 0);
+    this.cube21.castShadow =true;
     this.scene.add(this.cube21);
 
     const geometry22 = new THREE.BoxGeometry(0.8, 0.5, 1);
     this.cube22 = new THREE.Mesh(geometry22, material);
     this.cube22.name = objName
     this.cube22.position.set(-2, 1, 0);
+    this.cube22.castShadow =true;
+    this.cube22.receiveShadow=true;
     this.scene.add(this.cube22);
   }
   //サイレンBを追加する
