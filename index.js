@@ -62,6 +62,9 @@ class App extends Component {
   grid.material.opacity = 0.2;
   grid.material.transparent = true;
   this.scene.add( grid );
+
+  this.scene.fog = new THREE.Fog( 0xa0a0a0, 3, 33 );
+  
   };
 
  
@@ -123,6 +126,13 @@ class App extends Component {
     lights[0].position.set(1, 100, 0);
     lights[1].position.set(100, 0, 100);
     lights[2].position.set(-10, -10, -10);
+    
+    let light = lights[0];
+    light.castShadow =true;
+    light.shadow.camera.top = 18;
+    light.shadow.camera.bottom = - 10;
+    light.shadow.camera.left = - 10;
+    light.shadow.camera.right = 120;
 
     this.scene.add(lights[0]);
     this.scene.add(lights[1]);
